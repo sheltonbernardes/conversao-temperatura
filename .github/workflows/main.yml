@@ -42,6 +42,7 @@ jobs:
           fabricioveronez/conversao-live:v${{ github.run_number }}
   CD:
     runs-on: ubuntu-latest
+    needs: CI
     steps: 
     - name: Deploy no Azure Web App
       uses: Azure/webapps-deploy@v2.2.5
