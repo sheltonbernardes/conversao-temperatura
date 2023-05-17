@@ -25,3 +25,16 @@ jobs:
         npm run test
       working-directory: ./src
       
+    - name: Construção da imagem de container da aplicação
+      uses: docker/build-push-action@v4.0.0
+      with: 
+        context: ./src
+        file: ./src/Dockerfile
+        push: true
+        tags: |
+          fabricioveronez/conversao-live:latest
+          fabricioveronez/conversao-live:v${{ github.run_number }}
+          
+        
+    
+      
