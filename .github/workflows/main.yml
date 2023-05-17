@@ -40,6 +40,15 @@ jobs:
         tags: |
           fabricioveronez/conversao-live:latest
           fabricioveronez/conversao-live:v${{ github.run_number }}
+  CD:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Deploy no Azure Web App
+      uses: Azure/webapps-deploy@v2.2.5
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        images: fabricioveronez/conversao-live:v${{ github.run_number }}
           
         
     
